@@ -17,9 +17,13 @@ jobs:
     - name: Build the Docker image
       run: docker build -t metrics-server:v0.3.7 . --file metrics-server.Dockerfile
     
+    
     - name: Docker Login
       env:
         DOCKER_USER: 'wearehadock'
         DOCKER_PASS: ${{ secrets.PASS_DOCKERHUB }}
       run: docker login -u $DOCKER_USER -p $DOCKER_PASS
+      
+    - name: push
+      run: docker push wearehadock/metrics-server:v0.3.7
 
