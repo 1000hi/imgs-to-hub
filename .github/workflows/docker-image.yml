@@ -17,5 +17,5 @@ jobs:
     - name: Build the Docker image
       run: docker build -t metrics-server:v0.3.7 . --file metrics-server.Dockerfile
     - name: login 
-      run: docker login --username='wearehadock' --password=$PASS_DOCKERHUB hub.docker.com
+      run: docker login --username='wearehadock' --password=$PASS_DOCKERHUB 
 
