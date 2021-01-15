@@ -17,6 +17,11 @@ jobs:
     - name: Build the Docker image
       run: docker build -t metrics-server:v0.3.7 . --file metrics-server.Dockerfile
     
+    - name: get id 
+      run: image_id=$(docker images --filter=reference=metrics-server --format "{{.ID}}")
+     
+    - name: tag image 
+      run: docker tag $image_id wearehadock/metrics-server:v0.3.7
     
     - name: Docker Login
       env:
