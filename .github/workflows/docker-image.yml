@@ -14,19 +14,26 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      
+    - name: Build the Docker image
+      run: docker build -t kube-proxy:v1.18.10 . --file kube-proxy.Dockerfile
+    - name: tag image 
+      run: docker tag $(docker images --filter=reference=kube-proxy --format "{{.ID}}") wearehadock/kube-proxy:v1.18.10
+    
     - name: Build the Docker image
       run: docker build -t metrics-server:v0.3.7 . --file metrics-server.Dockerfile
-    
-     
     - name: tag image 
       run: docker tag $(docker images --filter=reference=metrics-server --format "{{.ID}}") wearehadock/metrics-server:v0.3.7
-    
+      
     - name: Docker Login
       env:
         DOCKER_USER: 'wearehadock'
         DOCKER_PASS: ${{ secrets.PASS_DOCKERHUB }}
       run: docker login -u $DOCKER_USER -p $DOCKER_PASS
       
+    - name: push
+      run: docker push wearehadock/kube-proxy:v1.18.10
+        
     - name: push
       run: docker push wearehadock/metrics-server:v0.3.7
 
