@@ -20,6 +20,21 @@ jobs:
     - name: tag image 
       run: docker tag $(docker images --filter=reference=kube-proxy --format "{{.ID}}") wearehadock/kube-proxy:v1.18.10
     
+    - name: Build the Docker image kube-controller-manager
+      run: docker build -t kube-controller-manager:v1.18.10 . --file kube-controller-manager.Dockerfile
+    - name: tag image 
+      run: docker tag $(docker images --filter=reference=kube-controller-manager --format "{{.ID}}") wearehadock/kube-controller-manager:v1.18.10
+     
+    - name: Build the Docker image kube-scheduler
+      run: docker build -t kube-scheduler:v1.18.10 . --file kube-scheduler.Dockerfile
+    - name: tag image 
+      run: docker tag $(docker images --filter=reference=kube-scheduler --format "{{.ID}}") wearehadock/kube-scheduler:v1.18.10
+       
+    - name: Build the Docker image kube-apiserver
+      run: docker build -t kube-apiserver:v1.18.10 . --file kube-apiserver.Dockerfile
+    - name: tag image 
+      run: docker tag $(docker images --filter=reference=kube-apiserver --format "{{.ID}}") wearehadock/kube-apiserver:v1.18.10
+       
     - name: Build the Docker image metrics-server
       run: docker build -t metrics-server:v0.3.7 . --file metrics-server.Dockerfile
     - name: tag image 
@@ -54,7 +69,13 @@ jobs:
       
     - name: push kube-proxy
       run: docker push wearehadock/kube-proxy:v1.18.10
-        
+    - name: push kube-controller-manager
+      run: docker push wearehadock/kube-controller-manager:v1.18.10
+    - name: push kube-scheduler
+      run: docker push wearehadock/kube-scheduler:v1.18.10
+    - name: push kube-apiserver
+      run: docker push wearehadock/kube-apiserver:v1.18.10
+          
     - name: push metrics-server
       run: docker push wearehadock/metrics-server:v0.3.7
    
