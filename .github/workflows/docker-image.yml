@@ -40,6 +40,12 @@ jobs:
     - name: tag image 
       run: docker tag $(docker images --filter=reference=addon-resizer --format "{{.ID}}") wearehadock/addon-resizer:1.8.11
       
+    - name: Build the Docker image pause
+      run: docker build -t pause:3.2 . --file pause.Dockerfile
+    - name: tag image 
+      run: docker tag $(docker images --filter=reference=pause --format "{{.ID}}") wearehadock/pause:3.2
+      
+      
     - name: Docker Login
       env:
         DOCKER_USER: 'wearehadock'
@@ -52,11 +58,14 @@ jobs:
     - name: push metrics-server
       run: docker push wearehadock/metrics-server:v0.3.7
    
-    - name: push
+    - name: push k8s-dns-node-cache image
       run: docker push wearehadock/k8s-dns-node-cache:1.15.13
         
-    - name: push
+    - name: push kube-registry-proxy image
       run: docker push wearehadock/kube-registry-proxy:0.4
     
-    - name: push
+    - name: push addon-resizer image
       run: docker push wearehadock/addon-resizer:1.8.11
+    
+    - name: push pause image
+      run: docker push wearehadock/pause:3.2
