@@ -17,24 +17,24 @@ jobs:
     - uses: actions/checkout@v2
       
     - name: Build the Docker image kube-proxy
-      run: docker build -t kube-proxy:v1.18.10 . --file kube-proxy.Dockerfile
+      run: docker build -t kube-proxy:v1.19.7 . --file kube-proxy.Dockerfile
     - name: tag image 
-      run: docker tag $(docker images --filter=reference=kube-proxy --format "{{.ID}}") wearehadock/kube-proxy:v1.18.10
+      run: docker tag $(docker images --filter=reference=kube-proxy --format "{{.ID}}") wearehadock/kube-proxy:v1.19.7
     
     - name: Build the Docker image kube-controller-manager
-      run: docker build -t kube-controller-manager:v1.18.10 . --file kube-controller-manager.Dockerfile
+      run: docker build -t kube-controller-manager:v1.19.7 . --file kube-controller-manager.Dockerfile
     - name: tag image 
-      run: docker tag $(docker images --filter=reference=kube-controller-manager --format "{{.ID}}") wearehadock/kube-controller-manager:v1.18.10
+      run: docker tag $(docker images --filter=reference=kube-controller-manager --format "{{.ID}}") wearehadock/kube-controller-manager:v1.19.7
      
     - name: Build the Docker image kube-scheduler
-      run: docker build -t kube-scheduler:v1.18.10 . --file kube-scheduler.Dockerfile
+      run: docker build -t kube-scheduler:v1.19.7 . --file kube-scheduler.Dockerfile
     - name: tag image 
-      run: docker tag $(docker images --filter=reference=kube-scheduler --format "{{.ID}}") wearehadock/kube-scheduler:v1.18.10
+      run: docker tag $(docker images --filter=reference=kube-scheduler --format "{{.ID}}") wearehadock/kube-scheduler:v1.19.7
        
     - name: Build the Docker image kube-apiserver
-      run: docker build -t kube-apiserver:v1.18.10 . --file kube-apiserver.Dockerfile
+      run: docker build -t kube-apiserver:v1.19.7 . --file kube-apiserver.Dockerfile
     - name: tag image 
-      run: docker tag $(docker images --filter=reference=kube-apiserver --format "{{.ID}}") wearehadock/kube-apiserver:v1.18.10
+      run: docker tag $(docker images --filter=reference=kube-apiserver --format "{{.ID}}") wearehadock/kube-apiserver:v1.19.7
        
     - name: Build the Docker image metrics-server
       run: docker build -t metrics-server:v0.3.7 . --file metrics-server.Dockerfile
@@ -42,9 +42,9 @@ jobs:
       run: docker tag $(docker images --filter=reference=metrics-server --format "{{.ID}}") wearehadock/metrics-server:v0.3.7
     
     - name: Build the Docker image k8s-dns-node-cache
-      run: docker build -t k8s-dns-node-cache:1.15.13 . --file k8s-dns-node-cache.Dockerfile
+      run: docker build -t k8s-dns-node-cache:1.16.0 . --file k8s-dns-node-cache.Dockerfile
     - name: tag image 
-      run: docker tag $(docker images --filter=reference=k8s-dns-node-cache --format "{{.ID}}") wearehadock/k8s-dns-node-cache:1.15.13
+      run: docker tag $(docker images --filter=reference=k8s-dns-node-cache --format "{{.ID}}") wearehadock/k8s-dns-node-cache:1.16.0
    
     - name: Build the Docker image kube-registry-proxy
       run: docker build -t kube-registry-proxy:0.4 . --file kube-registry-proxy.Dockerfile
@@ -57,9 +57,9 @@ jobs:
       run: docker tag $(docker images --filter=reference=addon-resizer --format "{{.ID}}") wearehadock/addon-resizer:1.8.11
       
     - name: Build the Docker image pause
-      run: docker build -t pause:3.2 . --file pause.Dockerfile
+      run: docker build -t pause:3.3 . --file pause.Dockerfile
     - name: tag image 
-      run: docker tag $(docker images --filter=reference=pause --format "{{.ID}}") wearehadock/pause:3.2
+      run: docker tag $(docker images --filter=reference=pause --format "{{.ID}}") wearehadock/pause:3.3
       
       
     - name: Docker Login
@@ -69,19 +69,19 @@ jobs:
       run: docker login -u $DOCKER_USER -p $DOCKER_PASS
       
     - name: push kube-proxy
-      run: docker push wearehadock/kube-proxy:v1.18.10
+      run: docker push wearehadock/kube-proxy:v1.19.7
     - name: push kube-controller-manager
-      run: docker push wearehadock/kube-controller-manager:v1.18.10
+      run: docker push wearehadock/kube-controller-manager:v1.19.7
     - name: push kube-scheduler
-      run: docker push wearehadock/kube-scheduler:v1.18.10
+      run: docker push wearehadock/kube-scheduler:v1.19.7
     - name: push kube-apiserver
-      run: docker push wearehadock/kube-apiserver:v1.18.10
+      run: docker push wearehadock/kube-apiserver:v1.19.7
           
     - name: push metrics-server
       run: docker push wearehadock/metrics-server:v0.3.7
    
     - name: push k8s-dns-node-cache image
-      run: docker push wearehadock/k8s-dns-node-cache:1.15.13
+      run: docker push wearehadock/k8s-dns-node-cache:1.16.0
         
     - name: push kube-registry-proxy image
       run: docker push wearehadock/kube-registry-proxy:0.4
@@ -90,4 +90,4 @@ jobs:
       run: docker push wearehadock/addon-resizer:1.8.11
     
     - name: push pause image
-      run: docker push wearehadock/pause:3.2
+      run: docker push wearehadock/pause:3.3
