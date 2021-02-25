@@ -17,7 +17,7 @@ jobs:
     - uses: actions/checkout@v2
     
     - name: Build the Docker image cluster-proportional-autoscaler-amd64
-      run: docker build -t image cluster-proportional-autoscaler-amd64:1.8.3 . --file cluster-proportional-autoscaler.Dockerfile
+      run: docker build -t cluster-proportional-autoscaler-amd64:1.8.3 . --file cluster-proportional-autoscaler.Dockerfile
     - name: tag image 
       run: docker tag $(docker images --filter=reference=cluster-proportional-autoscaler-amd64 --format "{{.ID}}") wearehadock/cluster-proportional-autoscaler-amd64:1.8.3
       
