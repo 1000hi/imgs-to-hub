@@ -15,6 +15,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    
+    - name: Build the Docker image cluster-proportional-autoscaler-amd64
+      run: docker build -t kube-proxy:v1.19.7 . --file cluster-proportional-autoscaler.Dockerfile
+    - name: tag image 
+      run: docker tag $(docker images --filter=reference=cluster-proportional-autoscaler-amd64 --format "{{.ID}}") wearehadock/cluster-proportional-autoscaler-amd64:1.8.3
       
     - name: Build the Docker image kube-proxy
       run: docker build -t kube-proxy:v1.19.7 . --file kube-proxy.Dockerfile
@@ -68,6 +73,8 @@ jobs:
         DOCKER_PASS: ${{ secrets.PASS_DOCKERHUB }}
       run: docker login -u $DOCKER_USER -p $DOCKER_PASS
       
+    - name: push cluster-proportional-autoscaler
+      run: docker push wearehadock/cluster-proportional-autoscaler-amd64:1.8.3 
     - name: push kube-proxy
       run: docker push wearehadock/kube-proxy:v1.19.7
     - name: push kube-controller-manager
