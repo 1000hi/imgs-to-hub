@@ -1,1 +1,1 @@
-FROM eu.gcr.io/k8s-artifacts-prod/k8s-dns-node-cache:1.16.0
+FROM eu.gcr.io/k8s-artifacts-prod/dns/k8s-dns-node-cache:1.16.0
