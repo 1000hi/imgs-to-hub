@@ -52,7 +52,7 @@ jobs:
       run: docker tag $(docker images --filter=reference=eu.gcr.io/k8s-artifacts-prod/metrics-server/metrics-server --format "{{.ID}}") wearehadock/metrics-server:v0.4.2
     
     - name: Pull the Docker image k8s-dns-node-cache
-      run: docker bpull eu.gcr.io/k8s-artifacts-prod/dns/k8s-dns-node-cache:1.17.1
+      run: docker pull eu.gcr.io/k8s-artifacts-prod/dns/k8s-dns-node-cache:1.17.1
     - name: tag image 
       run: docker tag $(docker images --filter=reference=eu.gcr.io/k8s-artifacts-prod/dns/k8s-dns-node-cache --format "{{.ID}}") wearehadock/k8s-dns-node-cache:1.17.1
    
