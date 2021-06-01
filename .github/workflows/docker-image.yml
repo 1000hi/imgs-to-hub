@@ -19,57 +19,57 @@ jobs:
     - name: Pull the Docker image cluster-proportional-autoscaler-amd64
       run: docker pull eu.gcr.io/k8s-artifacts-prod/cpa/cluster-proportional-autoscaler-amd64:1.8.3
     - name: tag image 
-      run: docker tag $(docker images --filter=reference=cluster-proportional-autoscaler-amd64 --format "{{.ID}}") wearehadock/cluster-proportional-autoscaler-amd64:1.8.3
+      run: docker tag $(docker images --filter=reference=eu.gcr.io/k8s-artifacts-prod/cpa/cluster-proportional-autoscaler-amd64 --format "{{.ID}}") wearehadock/cluster-proportional-autoscaler-amd64:1.8.3
      
     - name: Pull the Docker image controller
       run: docker pull eu.gcr.io/k8s-artifacts-prod/ingress-nginx/controller:v0.43.0
     - name: tag image 
-      run: docker tag $(docker images --filter=reference=controller --format "{{.ID}}") wearehadock/controller:v0.43.0
+      run: docker tag $(docker images --filter=reference=eu.gcr.io/k8s-artifacts-prod/ingress-nginx/controller --format "{{.ID}}") wearehadock/controller:v0.43.0
       
     - name: Pull the Docker image kube-proxy
       run: docker pull eu.gcr.io/k8s-artifacts-prod/kube-proxy:v1.20.7
     - name: tag image 
-      run: docker tag $(docker images --filter=reference=kube-proxy --format "{{.ID}}") wearehadock/kube-proxy:v1.20.7
+      run: docker tag $(docker images --filter=reference=eu.gcr.io/k8s-artifacts-prod/kube-proxy --format "{{.ID}}") wearehadock/kube-proxy:v1.20.7
     
     - name: Pull the Docker image kube-controller-manager
       run: docker pull eu.gcr.io/k8s-artifacts-prod/kube-controller-manager:v1.20.7
     - name: tag image 
-      run: docker tag $(docker images --filter=reference=kube-controller-manager --format "{{.ID}}") wearehadock/kube-controller-manager:v1.20.7
+      run: docker tag $(docker images --filter=reference=eu.gcr.io/k8s-artifacts-prod/kube-controller-manager --format "{{.ID}}") wearehadock/kube-controller-manager:v1.20.7
      
     - name: Pull the Docker image kube-scheduler
       run: docker pull eu.gcr.io/k8s-artifacts-prod/kube-scheduler:v1.20.7
     - name: tag image 
-      run: docker tag $(docker images --filter=reference=kube-scheduler --format "{{.ID}}") wearehadock/kube-scheduler:v1.20.7
+      run: docker tag $(docker images --filter=reference=eu.gcr.io/k8s-artifacts-prod/kube-scheduler --format "{{.ID}}") wearehadock/kube-scheduler:v1.20.7
        
     - name: Pull the Docker image kube-apiserver
       run: docker pull eu.gcr.io/k8s-artifacts-prod/kube-apiserver:v1.20.7
     - name: tag image 
-      run: docker tag $(docker images --filter=reference=kube-apiserver --format "{{.ID}}") wearehadock/kube-apiserver:v1.20.7
+      run: docker tag $(docker images --filter=reference=eu.gcr.io/k8s-artifacts-prod/kube-apiserver --format "{{.ID}}") wearehadock/kube-apiserver:v1.20.7
        
     - name: Pull the Docker image metrics-server
       run: docker pull eu.gcr.io/k8s-artifacts-prod/metrics-server/metrics-server:v0.4.2
     - name: tag image 
-      run: docker tag $(docker images --filter=reference=metrics-server --format "{{.ID}}") wearehadock/metrics-server:v0.4.2
+      run: docker tag $(docker images --filter=reference=eu.gcr.io/k8s-artifacts-prod/metrics-server/metrics-server --format "{{.ID}}") wearehadock/metrics-server:v0.4.2
     
     - name: Pull the Docker image k8s-dns-node-cache
       run: docker bpull eu.gcr.io/k8s-artifacts-prod/dns/k8s-dns-node-cache:1.17.1
     - name: tag image 
-      run: docker tag $(docker images --filter=reference=k8s-dns-node-cache --format "{{.ID}}") wearehadock/k8s-dns-node-cache:1.17.1
+      run: docker tag $(docker images --filter=reference=eu.gcr.io/k8s-artifacts-prod/dns/k8s-dns-node-cache --format "{{.ID}}") wearehadock/k8s-dns-node-cache:1.17.1
    
     - name: Pull the Docker image kube-registry-proxy
       run: docker pull eu.gcr.io/k8s-artifacts-prod/kube-registry-proxy:0.4
     - name: tag image 
-      run: docker tag $(docker images --filter=reference=kube-registry-proxy --format "{{.ID}}") wearehadock/kube-registry-proxy:0.4
+      run: docker tag $(docker images --filter=reference=eu.gcr.io/k8s-artifacts-prod/kube-registry-proxy --format "{{.ID}}") wearehadock/kube-registry-proxy:0.4
      
     - name: Pull the Docker image addon-resizer
       run: docker pull eu.gcr.io/k8s-artifacts-prod/addon-resizer:1.8.11
     - name: tag image 
-      run: docker tag $(docker images --filter=reference=addon-resizer --format "{{.ID}}") wearehadock/addon-resizer:1.8.11
+      run: docker tag $(docker images --filter=reference=eu.gcr.io/k8s-artifacts-prod/addon-resizer --format "{{.ID}}") wearehadock/addon-resizer:1.8.11
       
     - name: Pull the Docker image pause
       run: docker pull eu.gcr.io/k8s-artifacts-prod/pause:3.3
     - name: Pull image 
-      run: docker tag $(docker images --filter=reference=pause --format "{{.ID}}") wearehadock/pause:3.3
+      run: docker tag $(docker images --filter=reference=u.gcr.io/k8s-artifacts-prod/pause --format "{{.ID}}") wearehadock/pause:3.3
       
       
     - name: Docker Login
