@@ -69,7 +69,7 @@ jobs:
     - name: Pull the Docker image pause
       run: docker pull eu.gcr.io/k8s-artifacts-prod/pause:3.3
     - name: Pull image 
-      run: docker tag $(docker images --filter=reference=u.gcr.io/k8s-artifacts-prod/pause --format "{{.ID}}") wearehadock/pause:3.3
+      run: docker tag $(docker images --filter=reference=eu.gcr.io/k8s-artifacts-prod/pause --format "{{.ID}}") wearehadock/pause:3.3
       
       
     - name: Docker Login
