@@ -84,13 +84,13 @@ jobs:
     - name: push cluster-proportional-autoscaler
       run: docker push wearehadock/cluster-proportional-autoscaler-amd64:1.8.3 
     - name: push kube-proxy
-      run: docker push wearehadock/kube-proxy:v1.20.7
+      run: docker push wearehadock/kube-proxy:v1.19.15
     - name: push kube-controller-manager
-      run: docker push wearehadock/kube-controller-manager:v1.20.7
+      run: docker push wearehadock/kube-controller-manager:v1.19.15
     - name: push kube-scheduler
-      run: docker push wearehadock/kube-scheduler:v1.20.7
+      run: docker push wearehadock/kube-scheduler:v1.19.15
     - name: push kube-apiserver
-      run: docker push wearehadock/kube-apiserver:v1.20.7
+      run: docker push wearehadock/kube-apiserver:v1.19.15
           
     - name: push metrics-server
       run: docker push wearehadock/metrics-server:v0.4.2
