@@ -22,7 +22,7 @@ jobs:
       run: docker pull releases-docker.jfrog.io/jfrog/router:7.36.1
 
     - name: tag image 
-      run: docker tag $(docker images --filter=reference=releases-docker.jfrog.io/jfrog/router --format "{{.ID}}") ${{ secrets.DOCKER_HUB_USERNAME }}/jfrog/router:7.36.1
+      run: docker tag $(docker images --filter=reference=releases-docker.jfrog.io/jfrog/router --format "{{.ID}}") ${{ secrets.DOCKER_HUB_USERNAME }}/router:7.36.1
 
 
       
@@ -33,7 +33,7 @@ jobs:
       run: docker login -u $DOCKER_USER -p $DOCKER_PASS docker.io
       
     - name: push controller
-      run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/repositoi:${{ secrets.DOCKER_HUB_USERNAME }}/jfrog/router:7.36.1
+      run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/router:7.36.1
  
       
       
