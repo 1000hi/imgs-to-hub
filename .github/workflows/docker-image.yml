@@ -33,7 +33,7 @@ jobs:
       run: docker login -u $DOCKER_USER -p $DOCKER_PASS docker.io
       
     - name: push controller
-      run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/repositoi/jfrog/router:7.36.1
+      run: docker push ${{ secrets.DOCKER_HUB_USERNAME }/jfrog/router:7.36.1
  
       
       
