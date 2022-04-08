@@ -59,7 +59,7 @@ jobs:
       run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/insight-scheduler:4.7.9
     
     - name: push insight_server
-      run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/insight_server:4.7.9
+      run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/insight-server:4.7.9
     
     - name: push elasticsearch
       run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/elasticsearch-sg:7.16.3
