@@ -17,92 +17,24 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
+    
     - name: Pull the Docker image cluster-proportional-autoscaler-amd64
-      run: docker pull eu.gcr.io/k8s-artifacts-prod/cpa/cluster-proportional-autoscaler-amd64:1.8.3
+      run: docker pull releases-docker.jfrog.io/jfrog/router:7.36.1
+
     - name: tag image 
-      run: docker tag $(docker images --filter=reference=eu.gcr.io/k8s-artifacts-prod/cpa/cluster-proportional-autoscaler-amd64 --format "{{.ID}}") wearehadock/cluster-proportional-autoscaler-amd64:1.8.3
-     
-    - name: Pull the Docker image controller
-      run: docker pull eu.gcr.io/k8s-artifacts-prod/ingress-nginx/controller:v0.43.0
-    - name: tag image 
-      run: docker tag $(docker images --filter=reference=eu.gcr.io/k8s-artifacts-prod/ingress-nginx/controller --format "{{.ID}}") wearehadock/controller:v0.43.0
-      
-    - name: Pull the Docker image kube-proxy
-      run: docker pull eu.gcr.io/k8s-artifacts-prod/kube-proxy:v1.19.15
-    - name: tag image 
-      run: docker tag $(docker images --filter=reference=eu.gcr.io/k8s-artifacts-prod/kube-proxy --format "{{.ID}}") wearehadock/kube-proxy:v1.19.15
-    
-    - name: Pull the Docker image kube-controller-manager
-      run: docker pull eu.gcr.io/k8s-artifacts-prod/kube-controller-manager:v1.19.15
-    - name: tag image 
-      run: docker tag $(docker images --filter=reference=eu.gcr.io/k8s-artifacts-prod/kube-controller-manager --format "{{.ID}}") wearehadock/kube-controller-manager:v1.19.15
-     
-    - name: Pull the Docker image kube-scheduler
-      run: docker pull eu.gcr.io/k8s-artifacts-prod/kube-scheduler:v1.19.15
-    - name: tag image 
-      run: docker tag $(docker images --filter=reference=eu.gcr.io/k8s-artifacts-prod/kube-scheduler --format "{{.ID}}") wearehadock/kube-scheduler:v1.19.15
-       
-    - name: Pull the Docker image kube-apiserver
-      run: docker pull eu.gcr.io/k8s-artifacts-prod/kube-apiserver:v1.19.15
-    - name: tag image 
-      run: docker tag $(docker images --filter=reference=eu.gcr.io/k8s-artifacts-prod/kube-apiserver --format "{{.ID}}") wearehadock/kube-apiserver:v1.19.15
-       
-    - name: Pull the Docker image metrics-server
-      run: docker pull eu.gcr.io/k8s-artifacts-prod/metrics-server/metrics-server:v0.4.2
-    - name: tag image 
-      run: docker tag $(docker images --filter=reference=eu.gcr.io/k8s-artifacts-prod/metrics-server/metrics-server --format "{{.ID}}") wearehadock/metrics-server:v0.4.2
-    
-    - name: Pull the Docker image k8s-dns-node-cache
-      run: docker pull eu.gcr.io/k8s-artifacts-prod/dns/k8s-dns-node-cache:1.17.1
-    - name: tag image 
-      run: docker tag $(docker images --filter=reference=eu.gcr.io/k8s-artifacts-prod/dns/k8s-dns-node-cache --format "{{.ID}}") wearehadock/k8s-dns-node-cache:1.17.1
-   
-    - name: Pull the Docker image kube-registry-proxy
-      run: docker pull eu.gcr.io/k8s-artifacts-prod/kube-registry-proxy:0.4
-    - name: tag image 
-      run: docker tag $(docker images --filter=reference=eu.gcr.io/k8s-artifacts-prod/kube-registry-proxy --format "{{.ID}}") wearehadock/kube-registry-proxy:0.4
-     
-    - name: Pull the Docker image addon-resizer
-      run: docker pull eu.gcr.io/k8s-artifacts-prod/addon-resizer:1.8.11
-    - name: tag image 
-      run: docker tag $(docker images --filter=reference=eu.gcr.io/k8s-artifacts-prod/addon-resizer --format "{{.ID}}") wearehadock/addon-resizer:1.8.11
-      
-    - name: Pull the Docker image pause
-      run: docker pull eu.gcr.io/k8s-artifacts-prod/pause:3.3
-    - name: Pull image 
-      run: docker tag $(docker images --filter=reference=eu.gcr.io/k8s-artifacts-prod/pause --format "{{.ID}}") wearehadock/pause:3.3
-      
+      run: docker tag $(docker images --filter=releases-docker.jfrog.io/jfrog/router --format "{{.ID}}") ${{ secrets.DOCKER_HUB_USERNAME }}/jfrog/router:7.36.1
+
+
       
     - name: Docker Login
       env:
-        DOCKER_USER: 'wearehadock'
-        DOCKER_PASS: ${{ secrets.PASS_DOCKERHUB }}
+        DOCKER_USER: ${{ secrets.DOCKER_HUB_USERNAME }}
+        DOCKER_PASS: ${{ secrets.DOCKER_HUB_PASSWD }}
       run: docker login -u $DOCKER_USER -p $DOCKER_PASS
       
     - name: push controller
-      run: docker push wearehadock/controller:v0.43.0  
-    - name: push cluster-proportional-autoscaler
-      run: docker push wearehadock/cluster-proportional-autoscaler-amd64:1.8.3 
-    - name: push kube-proxy
-      run: docker push wearehadock/kube-proxy:v1.19.15
-    - name: push kube-controller-manager
-      run: docker push wearehadock/kube-controller-manager:v1.19.15
-    - name: push kube-scheduler
-      run: docker push wearehadock/kube-scheduler:v1.19.15
-    - name: push kube-apiserver
-      run: docker push wearehadock/kube-apiserver:v1.19.15
-          
-    - name: push metrics-server
-      run: docker push wearehadock/metrics-server:v0.4.2
-   
-    - name: push k8s-dns-node-cache image
-      run: docker push wearehadock/k8s-dns-node-cache:1.17.1
-        
-    - name: push kube-registry-proxy image
-      run: docker push wearehadock/kube-registry-proxy:0.4
-    
-    - name: push addon-resizer image
-      run: docker push wearehadock/addon-resizer:1.8.11
-    
-    - name: push pause image
-      run: docker push wearehadock/pause:3.3
+      run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/jfrog/router:7.36.1
+ 
+      
+      
+      
