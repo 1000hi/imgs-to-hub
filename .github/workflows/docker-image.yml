@@ -23,25 +23,25 @@ jobs:
     - name: tag image 
       run: docker tag $(docker images --filter=reference=releases-docker.jfrog.io/jfrog/router --format "{{.ID}}") ${{ secrets.DOCKER_HUB_USERNAME }}/router:7.36.1
 
-    - name: Pull the Docker image jfrog/scheduler
+    - name: Pull the Docker image jfrog/insight-scheduler
       run: docker pull releases-docker.jfrog.io/jfrog/insight-scheduler:4.7.9
     - name: tag image 
-      run: docker tag $(docker images --filter=reference=releases-docker.jfrog.io/jfrog/router --format "{{.ID}}") ${{ secrets.DOCKER_HUB_USERNAME }}/insight-scheduler:4.7.9
+      run: docker tag $(docker images --filter=reference=releases-docker.jfrog.io/jfrog/insight-scheduler --format "{{.ID}}") ${{ secrets.DOCKER_HUB_USERNAME }}/insight-scheduler:4.7.9
     
-    - name: Pull the Docker image jfrog/insight_server
-      run: docker pull releases-docker.jfrog.io/jfrog/insight_server:4.7.9
+    - name: Pull the Docker image jfrog/insight-server
+      run: docker pull releases-docker.jfrog.io/jfrog/insight-server:4.7.9
     - name: tag image 
-      run: docker tag $(docker images --filter=reference=releases-docker.jfrog.io/jfrog/router --format "{{.ID}}") ${{ secrets.DOCKER_HUB_USERNAME }}/insight_server:4.7.9
+      run: docker tag $(docker images --filter=reference=releases-docker.jfrog.io/jfrog/insight-server --format "{{.ID}}") ${{ secrets.DOCKER_HUB_USERNAME }}/insight_server:4.7.9
   
     - name: Pull the Docker image jfrog/elasticsearch
       run: docker pull releases-docker.jfrog.io/jfrog/elasticsearch-sg:7.16.3
     - name: tag image 
-      run: docker tag $(docker images --filter=reference=releases-docker.jfrog.io/jfrog/router --format "{{.ID}}") ${{ secrets.DOCKER_HUB_USERNAME }}/elasticsearch-sg:7.16.3
+      run: docker tag $(docker images --filter=reference=releases-docker.jfrog.io/jfrog/elasticsearch --format "{{.ID}}") ${{ secrets.DOCKER_HUB_USERNAME }}/elasticsearch-sg:7.16.3
 
     - name: Pull the Docker image jfrog/postgres
       run: docker pull releases-docker.jfrog.io/postgres:13.4-alpine
     - name: tag image 
-      run: docker tag $(docker images --filter=reference=releases-docker.jfrog.io/jfrog/router --format "{{.ID}}") ${{ secrets.DOCKER_HUB_USERNAME }}/postgres:13.4-alpine
+      run: docker tag $(docker images --filter=reference=releases-docker.jfrog.io/jfrog/postgres --format "{{.ID}}") ${{ secrets.DOCKER_HUB_USERNAME }}/postgres:13.4-alpine
 
 
 
