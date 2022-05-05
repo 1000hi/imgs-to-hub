@@ -43,8 +43,20 @@ jobs:
     - name: tag image 
       run: docker tag $(docker images --filter=reference=releases-docker.jfrog.io/postgres --format "{{.ID}}") ${{ secrets.DOCKER_HUB_USERNAME }}/postgres:13.4-alpine
 
-
-
+    - name: Pull the Docker image jfrog/postgres
+      run: docker pull releases-docker.jfrog.io/postgres:13.4-alpine
+    - name: tag image 
+      run: docker tag $(docker images --filter=reference=releases-docker.jfrog.io/postgres --format "{{.ID}}") ${{ secrets.DOCKER_HUB_USERNAME }}/postgres:13.4-alpine
+      
+    - name: Pull the Docker image jfrog/artifactory-pro
+      run: docker pull releases-docker.jfrog.io/jfrog/artifactory-pro:7.37.15
+    - name: tag image 
+      run: docker tag $(docker images --filter=reference=releases-docker.jfrog.io/jfrog/artifactory-pro --format "{{.ID}}") ${{ secrets.DOCKER_HUB_USERNAME }}/artifactory-pro:7.37.15
+    
+    - name: Pull the Docker image jfrog/nginx-artifactory-pro
+      run: docker pull releases-docker.jfrog.io/jfrog/nginx-artifactory-pro:latest
+    - name: tag image 
+      run: docker tag $(docker images --filter=reference=releases-docker.jfrog.io/jfrog/nginx-artifactory-pro --format "{{.ID}}") ${{ secrets.DOCKER_HUB_USERNAME }}//nginx-artifactory-pro:latest
       
     - name: Docker Login
       env:
@@ -67,6 +79,10 @@ jobs:
     - name: push postgres
       run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/postgres:13.4-alpine
 
+    - name: push artifactorry
+      run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/artifactory-pro:7.37.15
       
+    - name: push ngix
+      run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/nginx-artifactory-pro:latest
       
       
