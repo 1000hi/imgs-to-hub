@@ -56,7 +56,7 @@ jobs:
     - name: Pull the Docker image jfrog/nginx-artifactory-pro
       run: docker pull releases-docker.jfrog.io/jfrog/nginx-artifactory-pro:latest
     - name: tag image 
-      run: docker tag $(docker images --filter=reference=releases-docker.jfrog.io/jfrog/nginx-artifactory-pro --format "{{.ID}}") ${{ secrets.DOCKER_HUB_USERNAME }}//nginx-artifactory-pro:latest
+      run: docker tag $(docker images --filter=reference=releases-docker.jfrog.io/jfrog/nginx-artifactory-pro --format "{{.ID}}") ${{ secrets.DOCKER_HUB_USERNAME }}/nginx-artifactory-pro:latest
       
     - name: Docker Login
       env:
